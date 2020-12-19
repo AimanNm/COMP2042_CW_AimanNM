@@ -1,5 +1,6 @@
 package p4_group_8_repo;
 
+import java.awt.Toolkit;
 import java.util.Random;
 
 import javafx.animation.AnimationTimer;
@@ -23,6 +24,7 @@ public class Main extends Application {
 	    Scene scene  = new Scene(background,600,800);
 	    Random dice = new Random();
 	    int logheight = 150; //Height of log
+	    int enda = 96;
 	    float logspeed = 0.75F; //Speed of some of the logs
 	    
 	    //Sets background image.
@@ -40,26 +42,23 @@ public class Main extends Application {
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 270, 329, logspeed));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 490, 329, logspeed));
 		
-		//Spawns the turtles that you can walk on in the water. 'WetTurtle' is the turtle type that submerges.
-		background.add(new Turtle(500, 376, -1, 130, 130));
-		background.add(new Turtle(300, 376, -1, 130, 130));
-		background.add(new WetTurtle(700, 376, -1, 130, 130));
-		background.add(new WetTurtle(600, 217, -1, 130, 130));
-		background.add(new WetTurtle(400, 217, -1, 130, 130));
-		background.add(new WetTurtle(200, 217, -1, 130, 130));
+		//Spawns the turtles that you can walk on when in the water.
+		turtleNum(); //The turtles that do not submerge
+		background.add(new WetTurtle(800, 376, -1, 130, 130)); //Wet turtle in a different lane
+		wetTurtleNum(); //The turtles that submerge
 		
 		//End areas where the frog is trying to reach.
-		background.add(new End(13,96));
-		background.add(new End(141,96));
-		background.add(new End(269,96));
-		background.add(new End(396,96));
-		background.add(new End(528,96));
+		background.add(new End(13,enda));
+		background.add(new End(141,enda));
+		background.add(new End(269,enda));
+		background.add(new End(396,enda));
+		background.add(new End(528,enda));
 		
 		//For the frog protagonist.
 		animal = new Animal("file:src/p4_group_8_repo/froggerUp.png");
 		background.add(animal);
 		
-		//Adds the truck obstacles to the road.
+		//Adds the truck and car obstacles to the road.
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 0, 649, 1, 120, 120));
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 300, 649, 1, 120, 120));
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 600, 649, 1, 120, 120));
@@ -88,12 +87,13 @@ public class Main extends Application {
             		setNumber(animal.getPoints());
             	}
             	if (animal.getStop()) {
-            		System.out.print("STOPP:");
+            		System.out.print("STOPPED:");
             		background.stopMusic();
             		stop();
             		background.stop();
             		Alert alert = new Alert(AlertType.INFORMATION);
-            		alert.setTitle("You Have Won The Game!");
+            		Toolkit.getDefaultToolkit().beep();
+            		alert.setTitle("Congratulations, You Have Finished The Game!");
             		alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
             		alert.setContentText("Highest Possible Score: 800");
             		alert.show();
@@ -101,14 +101,25 @@ public class Main extends Application {
             }
         };
     }
-	//Music player
+	//Start and Music
 	public void start() {
 		background.playMusic();
     	createTimer();
         timer.start();
     }
 
-    public void stop() {
+    public void turtleNum() {
+    	for (int i=300; i<501; i+=200) {
+    		background.add(new Turtle(i, 376, -1, 130, 130));
+    	}
+    }
+    
+    public void wetTurtleNum() {
+    	for (int i=200; i<601; i+=200) {
+    		background.add(new Turtle(i, 217, -1, 130, 130));
+    	}
+    }
+	public void stop() {
         timer.stop();
     }
     //Update score
