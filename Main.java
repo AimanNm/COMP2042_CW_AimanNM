@@ -22,6 +22,8 @@ public class Main extends Application {
 	    background = new MyStage();
 	    Scene scene  = new Scene(background,600,800);
 	    Random dice = new Random();
+	    int logheight = 150; //Height of log
+	    float logspeed = 0.75F; //Speed of some of the logs
 	    
 	    //Sets background image.
 		BackgroundImage froggerback = new BackgroundImage("file:src/p4_group_8_repo/frogbackground1.png");
@@ -29,14 +31,14 @@ public class Main extends Application {
 		background.add(froggerback);
 		
 		//Spawns the logs in the water
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 150+dice.nextInt(100), 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 400+dice.nextInt(100), 166, 0.75)); //Added a small amount of randomness
-		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 0, 276, -2));
-		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 400, 276, -2));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 50, 329, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 270, 329, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 490, 329, 0.75));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 0, 166, logspeed));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 150+dice.nextInt(100), 166, logspeed));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 400+dice.nextInt(100), 166, logspeed)); //Added a small amount of randomness
+		background.add(new Log("file:src/p4_group_8_repo/logs.png", 2*logheight, 0, 276, -2));
+		background.add(new Log("file:src/p4_group_8_repo/logs.png", 2*logheight, 400, 276, -2));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 50, 329, logspeed));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 270, 329, logspeed));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", logheight, 490, 329, logspeed));
 		
 		//Spawns the turtles that you can walk on in the water. 'WetTurtle' is the turtle type that submerges.
 		background.add(new Turtle(500, 376, -1, 130, 130));
@@ -49,9 +51,9 @@ public class Main extends Application {
 		//End areas where the frog is trying to reach.
 		background.add(new End(13,96));
 		background.add(new End(141,96));
-		background.add(new End(141 + 141-13,96));
-		background.add(new End(141 + 141-13+141-13+1,96));
-		background.add(new End(141 + 141-13+141-13+141-13+3,96));
+		background.add(new End(269,96));
+		background.add(new End(396,96));
+		background.add(new End(528,96));
 		
 		//For the frog protagonist.
 		animal = new Animal("file:src/p4_group_8_repo/froggerUp.png");
