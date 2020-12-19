@@ -1,2 +1,2 @@
-# COMP2042_CW_AimanNM
-Software Maintenance (COMP2042 UNMC)
+# Screenshot of Game
+![alt text](https://raw.githubusercontent.com/hirish99/Frogger-Arcade-Game/master/arcade.png)
