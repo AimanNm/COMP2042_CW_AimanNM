@@ -31,21 +31,18 @@ public class Main extends Application {
 		//Obstacle obstacle1 = new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 100, 100,2 );
 		//Obstacle obstacle2 = new Obstacle("file:src/p4_group_8_repo/truck1Right.png",0,  150, 1);
 
-		BackgroundImage froggerback = new BackgroundImage("file:src/p4_group_8_repo/Screen Shot 2017-05-29 at 10.02.14 PM.png");
+		BackgroundImage froggerback = new BackgroundImage("file:src/p4_group_8_repo/arcade.png");
 	    
 		background.add(froggerback);
 		
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 220, 166, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 440, 166, 0.75));
-		//background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 0, 276, -2));
 		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 400, 276, -2));
-		//background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 800, 276, -2));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 50, 329, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 270, 329, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 490, 329, 0.75));
-		//background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 570, 329, 0.75));
 		
 		background.add(new Turtle(500, 376, -1, 130, 130));
 		background.add(new Turtle(300, 376, -1, 130, 130));
@@ -90,7 +87,7 @@ public class Main extends Application {
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 0, 540, 1, 200, 200));
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 500, 540, 1, 200, 200));
 		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 500, 490, -5, 50, 50));
-		background.add(new Digit(0, 30, 360, 25));
+		background.add(new Digit(0, 30, 80, 25));
 		//background.add(obstacle);
 		//background.add(obstacle1);
 		//background.add(obstacle2);
@@ -136,7 +133,7 @@ public class Main extends Application {
     		  int d = n / 10;
     		  int k = n - d * 10;
     		  n = d;
-    		  background.add(new Digit(k, 30, 360 - shift, 25));
+    		  background.add(new Digit(k, 30, 80 - shift, 25));
     		  shift+=30;
     		}
     }
