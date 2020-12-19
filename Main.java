@@ -2,6 +2,7 @@ package p4_group_8_repo;
 
 import java.io.File;
 import java.util.List;
+import java.util.Random;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -26,18 +27,19 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 	    background = new MyStage();
 	    Scene scene  = new Scene(background,600,800);
+	    Random dice = new Random();
 	    
 		//Obstacle obstacle = new Obstacle("file:src/p4_group_8_repo/truck1Right.png", 25, 25, 3);
 		//Obstacle obstacle1 = new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 100, 100,2 );
 		//Obstacle obstacle2 = new Obstacle("file:src/p4_group_8_repo/truck1Right.png",0,  150, 1);
 
-		BackgroundImage froggerback = new BackgroundImage("file:src/p4_group_8_repo/arcade.png");
+		BackgroundImage froggerback = new BackgroundImage("file:src/p4_group_8_repo/frogbackground1.png");
 	    
 		background.add(froggerback);
 		
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 220, 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 440, 166, 0.75));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 150+dice.nextInt(100), 166, 0.75));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 400+dice.nextInt(100), 166, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 0, 276, -2));
 		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 400, 276, -2));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 50, 329, 0.75));
