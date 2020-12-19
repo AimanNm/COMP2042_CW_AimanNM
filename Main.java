@@ -1,7 +1,5 @@
 package p4_group_8_repo;
 
-import java.io.File;
-import java.util.List;
 import java.util.Random;
 
 import javafx.animation.AnimationTimer;
@@ -9,11 +7,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class Main extends Application {
 	AnimationTimer timer;
@@ -29,59 +23,44 @@ public class Main extends Application {
 	    Scene scene  = new Scene(background,600,800);
 	    Random dice = new Random();
 	    
-		//Obstacle obstacle = new Obstacle("file:src/p4_group_8_repo/truck1Right.png", 25, 25, 3);
-		//Obstacle obstacle1 = new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 100, 100,2 );
-		//Obstacle obstacle2 = new Obstacle("file:src/p4_group_8_repo/truck1Right.png",0,  150, 1);
-
+	    //Sets background image.
 		BackgroundImage froggerback = new BackgroundImage("file:src/p4_group_8_repo/frogbackground1.png");
 	    
 		background.add(froggerback);
 		
+		//Spawns the logs in the water
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 150+dice.nextInt(100), 166, 0.75));
-		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 400+dice.nextInt(100), 166, 0.75));
+		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 400+dice.nextInt(100), 166, 0.75)); //Added a small amount of randomness
 		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 0, 276, -2));
 		background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 400, 276, -2));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 50, 329, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 270, 329, 0.75));
 		background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 490, 329, 0.75));
 		
+		//Spawns the turtles that you can walk on in the water. 'WetTurtle' is the turtle type that submerges.
 		background.add(new Turtle(500, 376, -1, 130, 130));
 		background.add(new Turtle(300, 376, -1, 130, 130));
 		background.add(new WetTurtle(700, 376, -1, 130, 130));
 		background.add(new WetTurtle(600, 217, -1, 130, 130));
 		background.add(new WetTurtle(400, 217, -1, 130, 130));
 		background.add(new WetTurtle(200, 217, -1, 130, 130));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 200, 100, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 0, 100, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 100, 120, -1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 200, 120, -1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 100, 140, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 200, 140, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 100, 160, -1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 300, 160, -1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 100, 180, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 200, 180, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 100, 200, -1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 200, 200, -1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 100, 220, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 200, 220, 1));
-		//background.add(new Log("file:src/p4_group_8_repo/log2.png", 400, 220, 1));
-		//End end2 = new End();
-		//End end3 = new End();
-		//End end4 = new End();
-		//End end5 = new End();
+		
+		//End areas where the frog is trying to reach.
 		background.add(new End(13,96));
 		background.add(new End(141,96));
 		background.add(new End(141 + 141-13,96));
 		background.add(new End(141 + 141-13+141-13+1,96));
 		background.add(new End(141 + 141-13+141-13+141-13+3,96));
+		
+		//For the frog protagonist.
 		animal = new Animal("file:src/p4_group_8_repo/froggerUp.png");
 		background.add(animal);
+		
+		//Adds the truck obstacles to the road.
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 0, 649, 1, 120, 120));
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 300, 649, 1, 120, 120));
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 600, 649, 1, 120, 120));
-		//background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 720, 649, 1, 120, 120));
 		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 100, 597, -1, 50, 50));
 		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 250, 597, -1, 50, 50));
 		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 400, 597, -1, 50, 50));
@@ -89,10 +68,11 @@ public class Main extends Application {
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 0, 540, 1, 200, 200));
 		background.add(new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 500, 540, 1, 200, 200));
 		background.add(new Obstacle("file:src/p4_group_8_repo/car1Left.png", 500, 490, -5, 50, 50));
+		
+		//Adds initial '0' to the score.
 		background.add(new Digit(0, 30, 80, 25));
-		//background.add(obstacle);
-		//background.add(obstacle1);
-		//background.add(obstacle2);
+		
+		
 		background.start();
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -119,6 +99,7 @@ public class Main extends Application {
             }
         };
     }
+	//Music player
 	public void start() {
 		background.playMusic();
     	createTimer();
@@ -128,7 +109,7 @@ public class Main extends Application {
     public void stop() {
         timer.stop();
     }
-    
+    //Update score
     public void setNumber(int n) {
     	int shift = 0;
     	while (n > 0) {
