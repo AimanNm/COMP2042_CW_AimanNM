@@ -10,7 +10,7 @@ This repository consists of:
 4. A short video of the Frogger game running
 
 # Screenshot of Game
-![alt text](https://raw.githubusercontent.com/hirish99/Frogger-Arcade-Game/master/arcade.png)
+![alt text](https://raw.githubusercontent.com/AimanNm/COMP2042_CW_AimanNM/main/screenshot.png)
 
 This project requires a Java IDE. Import the necessary files into a project in the IDE to run.
 
